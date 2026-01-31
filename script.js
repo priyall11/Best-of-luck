@@ -2,40 +2,33 @@ const magicBtn = document.getElementById('magicBtn');
 const closeBtn = document.getElementById('closeBtn');
 const modal = document.getElementById('popupModal');
 
-// Function to trigger confetti
-function fireConfetti() {
-    var duration = 3 * 1000;
-    var end = Date.now() + duration;
+function launchFireworks() {
+    var count = 200;
+    var defaults = { origin: { y: 0.7 } };
 
-    (function frame() {
-        confetti({
-            particleCount: 5,
-            angle: 60,
-            spread: 55,
-            origin: { x: 0 },
-            colors: ['#ff3366', '#33ccff', '#ffeb3b']
-        });
-        confetti({
-            particleCount: 5,
-            angle: 120,
-            spread: 55,
-            origin: { x: 1 },
-            colors: ['#ff3366', '#33ccff', '#ffeb3b']
-        });
+    function fire(particleRatio, opts) {
+        confetti(Object.assign({}, defaults, opts, {
+            particleCount: Math.floor(count * particleRatio)
+        }));
+    }
 
-        if (Date.now() < end) {
-            requestAnimationFrame(frame);
-        }
-    }());
+    fire(0.25, { spread: 26, startVelocity: 55 });
+    fire(0.2, { spread: 60 });
+    fire(0.35, { spread: 100, decay: 0.91, scalar: 0.8 });
+    fire(0.1, { spread: 120, startVelocity: 25, decay: 0.92, scalar: 1.2 });
+    fire(0.1, { spread: 120, startVelocity: 45 });
 }
 
-// Click Event
 magicBtn.addEventListener('click', () => {
     modal.style.display = 'flex';
-    fireConfetti();
+    // Continuous Confetti
+    let end = Date.now() + 2000;
+    (function frame() {
+        launchFireworks();
+        if (Date.now() < end) requestAnimationFrame(frame);
+    }());
 });
 
-// Close Event
 closeBtn.addEventListener('click', () => {
     modal.style.display = 'none';
 });
