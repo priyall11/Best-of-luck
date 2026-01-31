@@ -1,14 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;700&display=swap');
+
 body {
     margin: 0;
-    padding: 0;
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #a18cd1, #fbc2eb);
-    background-size: 400% 400%;
-    animation: gradientBG 10s ease infinite;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: 'Poppins', sans-serif;
+    background: #0f0c29; /* Darker background for glow effect */
+    background: linear-gradient(45deg, #240b36, #c31432, #1e3c72);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
     overflow: hidden;
 }
 
@@ -18,115 +20,87 @@ body {
     100% { background-position: 0% 50%; }
 }
 
-.container {
-    text-align: center;
-    color: white;
-    animation: fadeIn 2s ease-in;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.main-title {
-    font-size: 3.5rem;
-    margin-bottom: 10px;
-    text-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-.sub-text {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
-    opacity: 0.9;
-}
-
-button#magicButton {
-    padding: 18px 40px;
-    font-size: 1.3rem;
-    border: none;
-    border-radius: 50px;
-    background: white;
-    color: #ff69b4;
-    cursor: pointer;
-    font-weight: bold;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-button#magicButton:hover {
-    transform: scale(1.1) rotate(-3deg);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-}
-
-/* Modal Styling */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 100;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(8px);
-    justify-content: center;
-    align-items: center;
-}
-
-.modal-content {
-    background: white;
+.glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     padding: 50px;
     border-radius: 30px;
     text-align: center;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
-    max-width: 450px;
-    position: relative;
-    animation: modalPop 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+    z-index: 10;
 }
 
-@keyframes modalPop {
-    0% { transform: scale(0.5); opacity: 0; }
+.glow-text {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3.5rem;
+    color: white;
+    text-shadow: 0 0 20px #ff007f, 0 0 40px #ff007f;
+    margin: 15px 0;
+}
+
+.subtitle { color: #ddd; letter-spacing: 1px; }
+
+#magicBtn {
+    margin-top: 20px;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(90deg, #ff007f, #ffeb3b);
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(255, 0, 127, 0.3);
+    transition: 0.4s;
+}
+
+#magicBtn:hover {
+    transform: scale(1.1) rotate(2deg);
+    box-shadow: 0 15px 30px rgba(255, 0, 127, 0.5);
+}
+
+/* Modal Styling */
+.modal-overlay {
+    position: fixed;
+    top:0; left:0; width:100%; height:100%;
+    background: rgba(0,0,0,0.85);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 60px;
+    border-radius: 40px;
+    text-align: center;
+    position: relative;
+    animation: zoomBounce 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes zoomBounce {
+    0% { transform: scale(0); opacity: 0; }
     100% { transform: scale(1); opacity: 1; }
 }
 
-.wish-title {
-    color: #333;
-    font-size: 2.2rem;
-    line-height: 1.2;
+.prachi-name {
+    font-size: 3rem;
+    background: linear-gradient(90deg, #ff007f, #00dbde);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
 }
 
-.wish-title span {
-    color: #ff69b4;
-    font-size: 2.8rem;
-    text-decoration: underline wavy #ffeb3b;
-}
+.wish-main { font-size: 1.5rem; color: #555; margin-bottom: 0; }
 
-.heart-icon {
-    font-size: 50px;
-    animation: heartBeat 1s infinite;
-}
-
-@keyframes heartBeat {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.2); }
-}
-
-.close {
-    position: absolute;
-    right: 20px;
-    top: 15px;
-    font-size: 25px;
-    cursor: pointer;
-    color: #aaa;
-}
-
-.close-btn {
-    margin-top: 25px;
-    padding: 10px 25px;
-    background: #ff69b4;
-    color: white;
+#closeBtn {
+    margin-top: 30px;
+    padding: 12px 30px;
     border: none;
+    background: #222;
+    color: #fff;
     border-radius: 10px;
     cursor: pointer;
 }
