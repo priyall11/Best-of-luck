@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;300;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
 
 body {
     margin: 0;
@@ -6,9 +6,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: 'Inter', sans-serif;
+    /* Vibrant Colorful Gradient */
     background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #a18cd1, #fbc2eb);
     background-size: 400% 400%;
-    animation: gradientBG 15s ease infinite;
+    animation: gradientBG 12s ease infinite;
     overflow: hidden;
 }
 
@@ -19,57 +21,56 @@ body {
 }
 
 .glass-card {
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 40px 50px; /* Reduced padding for a tighter look */
+    padding: 50px;
     border-radius: 20px;
     text-align: center;
     box-shadow: 0 15px 35px rgba(0,0,0,0.1);
 }
 
 .main-title {
-    /* Font size reduced for a better look */
+    /* Monotype Corsiva Font */
     font-family: "Monotype Corsiva", "Apple Chancery", cursive;
     font-size: 2.8rem; 
     color: white;
     margin-bottom: 10px;
-    text-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+    text-shadow: 1px 1px 8px rgba(0,0,0,0.1);
 }
 
 .minimal-text {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.8rem; /* Slightly smaller to match */
-    color: rgba(255, 255, 255, 0.9);
-    font-weight: 100; 
-    letter-spacing: 3px; 
+    font-size: 0.9rem;
+    color: white;
+    font-weight: 700; /* Bold as requested */
+    letter-spacing: 2px;
     text-transform: uppercase;
 }
 
 #magicBtn {
     margin-top: 30px;
-    padding: 12px 35px;
+    padding: 15px 40px;
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
     background: white;
     color: #ff69b4;
-    font-family: 'Inter', sans-serif;
     font-weight: bold;
-    font-size: 0.85rem;
+    font-size: 1rem;
     cursor: pointer;
-    transition: 0.3s;
+    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 #magicBtn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transform: scale(1.1);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
-/* Modal Popup adjustments */
+/* Modal Styling */
 .modal-overlay {
     position: fixed;
-    top:0; left:0; width:100%; height:100%;
-    background: rgba(0,0,0,0.7);
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.75);
     display: none;
     justify-content: center;
     align-items: center;
@@ -79,13 +80,29 @@ body {
 .modal-content {
     background: white;
     padding: 40px;
-    border-radius: 15px;
+    border-radius: 20px;
     text-align: center;
-    font-family: 'Inter', sans-serif;
+    animation: popIn 0.5s ease;
+}
+
+@keyframes popIn {
+    0% { transform: scale(0.7); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
 }
 
 .prachi-name {
     font-family: "Monotype Corsiva", cursive;
-    font-size: 2.2rem; /* Adjusted size inside popup */
+    font-size: 2.5rem;
     color: #ff69b4;
+    margin: 10px 0;
+}
+
+#closeBtn {
+    margin-top: 20px;
+    padding: 10px 25px;
+    border: none;
+    background: #333;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
 }
