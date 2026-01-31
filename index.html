@@ -3,61 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For You Prachiiiii ✨</title>
+    <title>For Prachiiiii ✨</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 <body>
+    <div class="bg-hearts"></div>
 
-    <div class="container">
-        <h1 class="main-title">Hey Prachiiiii! 🌸</h1>
-        <p class="sub-text">I have a surprise for you...</p>
-        <button id="magicButton" onclick="showWish()">Tap for Magic ✨</button>
+    <div class="glass-card">
+        <div class="profile-icon">👸</div>
+        <h1 class="glow-text">Hey Prachiiiii!</h1>
+        <p class="subtitle">Something special is waiting for you...</p>
+        <button id="magicBtn">Open Surprise 🎁</button>
     </div>
 
-    <div id="wishModal" class="modal">
+    <div id="popupModal" class="modal-overlay">
         <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <div class="heart-icon">❤️</div>
-            <h2 class="wish-title">ALL THE BEST, <br><span>PRACHIIIII!</span> 🚀</h2>
-            <p class="personal-note">You're going to be amazing today. Give it your best shot! 🌈✨</p>
-            <button class="close-btn" onclick="closeModal()">Go Kill It! 💪</button>
+            <div class="sparkle">✨</div>
+            <h2 class="wish-main">ALL THE BEST!</h2>
+            <h3 class="prachi-name">PRACHIIIII</h3>
+            <p class="emotional-note">Believe in yourself. You are capable of amazing things! 🌈💖</p>
+            <button id="closeBtn">You Got This! 💪</button>
         </div>
     </div>
 
-    <script>
-        function showWish() {
-            document.getElementById('wishModal').style.display = 'flex';
-            
-            // Colorful Confetti Explosion
-            var end = Date.now() + (4 * 1000);
-            var colors = ['#ff69b4', '#ffffff', '#00dbde', '#fc00ff', '#ffeb3b'];
-
-            (function frame() {
-              confetti({
-                particleCount: 4,
-                angle: 60,
-                spread: 55,
-                origin: { x: 0 },
-                colors: colors
-              });
-              confetti({
-                particleCount: 4,
-                angle: 120,
-                spread: 55,
-                origin: { x: 1 },
-                colors: colors
-              });
-
-              if (Date.now() < end) {
-                requestAnimationFrame(frame);
-              }
-            }());
-        }
-
-        function closeModal() {
-            document.getElementById('wishModal').style.display = 'none';
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
